@@ -20,7 +20,7 @@
             android:layout_marginBottom="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="#bababa" />
+            />
 
         <TextView
             android:id="@+id/viewProductName"
@@ -59,6 +59,17 @@
             android:fontFamily="sans-serif-medium"
             android:text="$599,99"
             />
+        <ImageView
+            android:id="@+id/view_wishlist_icon"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:contentDescription="@null"
+            android:padding="8dp"
+            android:src="@drawable/ic_favourite_enabled"
+            app:layout_constraintTop_toBottomOf="@id/productImage"
+            app:layout_constraintStart_toStartOf="parent"
+            />
 
         <Button
             android:id="@+id/buyButton"
@@ -74,6 +85,7 @@
             android:layout_marginBottom="16dp"
             android:text="Buy it!"
             />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
