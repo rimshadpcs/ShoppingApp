@@ -1,5 +1,7 @@
 package com.rimapps.shoppingapp.di.module
 
+import com.rimapps.WishListDatabaseRepository
+import com.rimapps.shoppingapp.features.WishListRepository
 import com.rimapps.shoppingapp.features.productList.repository.api.ApiClient
 import com.rimapps.shoppingapp.features.productList.repository.ProductRepository
 import com.rimapps.shoppingapp.features.productList.repository.api.ProductRepositoryApi
@@ -26,5 +28,10 @@ class RepositoryModule {
     fun providesProductRepository(
         productRepositoryAPI: ProductRepositoryApi
     ): ProductRepository = productRepositoryAPI
+
+    @Provides
+    fun providesWishListRepository(
+        databaseRepository: WishListDatabaseRepository
+    ):WishListRepository = databaseRepository
 
 }

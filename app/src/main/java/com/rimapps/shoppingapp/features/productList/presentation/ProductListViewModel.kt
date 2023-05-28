@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.rimapps.shoppingapp.features.WishListRepository
 import com.rimapps.shoppingapp.features.productList.presentation.ProductListViewState
 import com.rimapps.shoppingapp.features.productList.repository.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -11,7 +12,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProductListViewModel @Inject constructor(private val repository: ProductRepository) : ViewModel(
+class ProductListViewModel @Inject constructor(
+    private val repository: ProductRepository,
+    private val wishListRepository: WishListRepository
+    ) : ViewModel(
 ) {
     private val _viewState = MutableLiveData<ProductListViewState>()
 
@@ -30,7 +34,7 @@ class ProductListViewModel @Inject constructor(private val repository: ProductRe
                     it.description,
                     "USD ${it.price}",
                     it.imageUrl,
-                    isFavourite = false
+                    wishListRepository.isFavourite(it.productId)
                 )
             }))
 
