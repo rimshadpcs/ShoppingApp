@@ -9,11 +9,10 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.rimapps.shoppingapp.ProductCardViewState
-import com.rimapps.shoppingapp.ProductListViewState
 import com.rimapps.shoppingapp.databinding.FragmentProductListBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ProductListFragment : Fragment() {
     private lateinit var binding: FragmentProductListBinding
     private val viewModel: ProductListViewModel by viewModels()
