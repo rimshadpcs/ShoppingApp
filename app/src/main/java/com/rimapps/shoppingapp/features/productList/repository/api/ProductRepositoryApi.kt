@@ -1,7 +1,6 @@
 package com.rimapps.shoppingapp.features.productList.repository.api
 
-import com.rimapps.shoppingapp.Product
-import com.rimapps.shoppingapp.features.productList.presentation.ProductCardViewState
+import com.rimapps.shoppingapp.features.productList.business.Product
 import com.rimapps.shoppingapp.features.productList.repository.ProductRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -18,7 +17,7 @@ class ProductRepositoryApi @Inject constructor(private val service: ProductServi
                     it.description,
                     it.price.toDouble(),
                     it.imageUrl,
-                    it.productId
+                    it.id
 
                 )
             }
