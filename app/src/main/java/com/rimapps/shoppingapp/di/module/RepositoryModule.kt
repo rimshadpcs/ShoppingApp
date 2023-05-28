@@ -1,14 +1,19 @@
 package com.rimapps.shoppingapp.di.module
 
-import com.rimapps.WishListDatabaseRepository
-import com.rimapps.shoppingapp.features.WishListRepository
+import android.content.Context
+import androidx.room.Room
+import com.rimapps.shoppingapp.features.wishList.repository.WishListDatabaseRepository
+import com.rimapps.shoppingapp.features.wishList.repository.WishListRepository
 import com.rimapps.shoppingapp.features.productList.repository.api.ApiClient
 import com.rimapps.shoppingapp.features.productList.repository.ProductRepository
 import com.rimapps.shoppingapp.features.productList.repository.api.ProductRepositoryApi
 import com.rimapps.shoppingapp.features.productList.repository.api.ProductService
+import com.rimapps.shoppingapp.features.wishList.dataBase.WishListDao
+import com.rimapps.shoppingapp.features.wishList.dataBase.WishListDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 
 @Module
@@ -32,6 +37,17 @@ class RepositoryModule {
     @Provides
     fun providesWishListRepository(
         databaseRepository: WishListDatabaseRepository
-    ):WishListRepository = databaseRepository
+    ): WishListRepository = databaseRepository
+
+    @Provides
+    fun providesWishListDAO(
+        @ApplicationContext context: Context
+    ): WishListDao {
+        val db = Room.databaseBuilder(
+            context, WishListDatabase::class.java,
+            "shoppingApp-database"
+        ).build()
+        return db.wishListDao()
+    }
 
 }

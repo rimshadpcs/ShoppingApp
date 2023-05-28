@@ -4,8 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.rimapps.shoppingapp.features.WishListRepository
-import com.rimapps.shoppingapp.features.productList.presentation.ProductListViewState
+import com.rimapps.shoppingapp.features.wishList.repository.WishListRepository
 import com.rimapps.shoppingapp.features.productList.repository.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -26,6 +25,7 @@ class ProductListViewModel @Inject constructor(
     fun loadProductList() {
 
         viewModelScope.launch {
+            wishListRepository.addToWishList("1")
             _viewState.postValue(ProductListViewState.Loading)
             val productList = repository.getProductList()
             _viewState.postValue(ProductListViewState.Content(productList.map {
@@ -34,7 +34,7 @@ class ProductListViewModel @Inject constructor(
                     it.description,
                     "USD ${it.price}",
                     it.imageUrl,
-                    wishListRepository.isFavourite(it.productId)
+                    wishListRepository.isFavourite(it.id)
                 )
             }))
 
