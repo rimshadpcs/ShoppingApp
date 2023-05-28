@@ -5,6 +5,7 @@ data class ProductCardEntity(
     val description: String,
     val price: String,
     val imageUrl: String,
+    val productId: String
 ) {
 
 
