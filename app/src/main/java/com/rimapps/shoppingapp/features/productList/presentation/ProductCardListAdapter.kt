@@ -1,5 +1,6 @@
 package com.rimapps.shoppingapp.features.productList.presentation
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +10,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.BitmapImageViewTarget
 import com.rimapps.shoppingapp.R
 import com.rimapps.shoppingapp.databinding.ProductCardBinding
+class  ProductCardListAdapter(
+    val onItemClicked: (ProductCardViewState) -> Unit,
+    val onFavoriteIconClicked: (ProductCardViewState) -> Unit,
 
-class ProductCardListAdapter(
-    val onItemClicked: (ProductCardViewState) -> Unit) : RecyclerView.Adapter<ProductCardListAdapter.ViewHolder>() {
+    ) : RecyclerView.Adapter<ProductCardListAdapter.ViewHolder>() {
 
 
     private var data: List<ProductCardViewState> = emptyList()
@@ -33,8 +36,10 @@ class ProductCardListAdapter(
         return data.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(productList: List<ProductCardViewState>) {
         this.data = productList
+        notifyDataSetChanged()
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -47,11 +52,18 @@ class ProductCardListAdapter(
                 viewProductName.text = productCardViewState.title
                 viewProductDescription.text = productCardViewState.description
                 productPrice.text = productCardViewState.price
+
+                viewWishlistIcon.setOnClickListener {
+                    onFavoriteIconClicked.invoke(
+                        productCardViewState
+                    )
+                }
+
                 viewWishlistIcon.setImageDrawable(
                     if(productCardViewState.isFavourite){
                         ResourcesCompat.getDrawable(viewWishlistIcon.resources,R.drawable.ic_favourite_enabled,null)
-                    }
-                else{
+
+                    }else{
                         ResourcesCompat.getDrawable(viewWishlistIcon.resources,R.drawable.ic_favourite_disabled,null)
                     }
                 )

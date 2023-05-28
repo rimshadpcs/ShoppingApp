@@ -8,6 +8,5 @@ import androidx.room.PrimaryKey
 data class FavouriteProductEntity(
     @PrimaryKey val id: String,
     @ColumnInfo(name = "product_name") val productName: String
-
 ) {
 }

@@ -15,10 +15,9 @@ class ProductRepositoryApi @Inject constructor(private val service: ProductServi
                 Product(
                     it.title,
                     it.description,
-                    it.price.toDouble(),
+                    it.price,
                     it.imageUrl,
                     it.id
-
                 )
             }
 

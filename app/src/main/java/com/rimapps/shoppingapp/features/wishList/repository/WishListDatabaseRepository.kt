@@ -7,31 +7,31 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
+
 class WishListDatabaseRepository @Inject constructor(
-    private val dao: WishListDao
-) : WishListRepository {
+    private val databaseDAO:WishListDao
+)  : WishListRepository {
 
     override suspend fun isFavourite(productId: String): Boolean {
         return withContext(Dispatchers.IO) {
-            dao.isProductFavourite(productId) != null
+            databaseDAO.isProductFavourite(productId) != null
         }
     }
 
     override suspend fun addToWishList(productId: String) {
         return withContext(Dispatchers.IO) {
-            dao.addProductToFavourite(
-                FavouriteProductEntity(productId, "")
+            databaseDAO.addProductToFavourite(
+                FavouriteProductEntity(productId,"")
             )
         }
     }
 
     override suspend fun removeFromWishList(productId: String) {
         return withContext(Dispatchers.IO) {
-            dao.removeProductFromFavourite(
-                FavouriteProductEntity(
-                    productId, ""
-                )
+            databaseDAO.removeProductFromFavourite(
+                FavouriteProductEntity(productId,"")
             )
         }
     }
+
 }
