@@ -75,6 +75,14 @@ dependencies {
     implementation "androidx.room:room-runtime:2.5.1"
     annotationProcessor "androidx.room:room-compiler:2.5.1"
     kapt "androidx.room:room-compiler:2.5.1"
+
+    // Mockk
+    testImplementation "io.mockk:mockk:1.12.1"
+    testImplementation "androidx.arch.core:core-testing:2.2.0"
+    // Coroutines Test
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'
+    testImplementation "androidx.arch.core:core-testing:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
 }
 kapt {
     correctErrorTypes true

@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.room.Room
 import com.rimapps.shoppingapp.features.wishList.repository.WishListDatabaseRepository
 import com.rimapps.shoppingapp.features.wishList.repository.WishListRepository
-import com.rimapps.shoppingapp.features.productList.repository.api.ApiClient
-import com.rimapps.shoppingapp.features.productList.repository.ProductRepository
-import com.rimapps.shoppingapp.features.productList.repository.api.ProductRepositoryApi
-import com.rimapps.shoppingapp.features.productList.repository.api.ProductService
+import com.rimapps.shoppingapp.shared.data.repository.api.ApiClient
+import com.rimapps.shoppingapp.shared.data.repository.ProductRepository
+import com.rimapps.shoppingapp.shared.data.repository.api.ProductRepositoryApi
+import com.rimapps.shoppingapp.shared.data.repository.api.ProductService
 import com.rimapps.shoppingapp.features.wishList.dataBase.WishListDao
 import com.rimapps.shoppingapp.features.wishList.dataBase.WishListDatabase
 import dagger.Module

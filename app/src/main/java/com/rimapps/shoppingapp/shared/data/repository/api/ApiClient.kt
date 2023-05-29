@@ -1,4 +1,4 @@
-package com.rimapps.shoppingapp.features.productList.repository.api
+package com.rimapps.shoppingapp.shared.data.repository.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
