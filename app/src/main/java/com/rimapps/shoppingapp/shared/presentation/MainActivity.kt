@@ -1,4 +1,4 @@
-package com.rimapps.shoppingapp
+package com.rimapps.shoppingapp.shared.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
